@@ -21,8 +21,6 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.TreeItem;
@@ -73,28 +71,28 @@ import org.eclipse.swt.widgets.TreeItem;
 			topBar.setLayout(menuLayout);
 			
 			Menu menuBar = new Menu(textEditorShell, SWT.BAR);
-		    MenuItem fileMenuHeader = new MenuItem(menuBar, SWT.CASCADE);
-		    fileMenuHeader.setText("&File");
-		    
-		    Menu fileMenu = new Menu(textEditorShell, SWT.DROP_DOWN);
-		    fileMenuHeader.setMenu(fileMenu);
-		    
-		    MenuItem changeDirItem = new MenuItem(fileMenu, SWT.PUSH);
-		    changeDirItem.setText("&Change Directory");
-
-		    MenuItem fileSaveItem = new MenuItem(fileMenu, SWT.PUSH);
-		    fileSaveItem.setText("&Save");
-
-		    MenuItem fileExitItem = new MenuItem(fileMenu, SWT.PUSH);
-		    fileExitItem.setText("E&xit");
-
-		    changeDirItem.addSelectionListener(new changeDirItemListener());
-		    fileSaveItem.addSelectionListener(new fileSaveItemListener());
-		    fileExitItem.addSelectionListener(new fileExitItemListener());
-		    
+			MenuItem fileMenuHeader = new MenuItem(menuBar, SWT.CASCADE);
+			fileMenuHeader.setText("&File");
 			
-		    CLabel mainLabel = new CLabel(topBar, SWT.NONE);
-		    mainLabel.setText("Current Directory:");
+			Menu fileMenu = new Menu(textEditorShell, SWT.DROP_DOWN);
+			fileMenuHeader.setMenu(fileMenu);
+			
+			MenuItem changeDirItem = new MenuItem(fileMenu, SWT.PUSH);
+			changeDirItem.setText("&Change Directory");
+			
+			MenuItem fileSaveItem = new MenuItem(fileMenu, SWT.PUSH);
+			fileSaveItem.setText("&Save");
+			
+			MenuItem fileExitItem = new MenuItem(fileMenu, SWT.PUSH);
+			fileExitItem.setText("E&xit");
+			
+			changeDirItem.addSelectionListener(new changeDirItemListener());
+			fileSaveItem.addSelectionListener(new fileSaveItemListener());
+			fileExitItem.addSelectionListener(new fileExitItemListener());
+			
+			
+			CLabel mainLabel = new CLabel(topBar, SWT.NONE);
+			mainLabel.setText("Current Directory:");
 			//Creates the text that goes beside the Change Directory button
 			explorerDirLabel = new CLabel(topBar, SWT.NONE);
 			explorerDirLabel.setText(editorDir);
@@ -133,7 +131,7 @@ import org.eclipse.swt.widgets.TreeItem;
 			});
 			
 			contentViewer.getTree().addSelectionListener(new SelectionAdapter() {
-
+			
 				@Override
 				public void widgetSelected(SelectionEvent e) {
 					TreeItem item = (TreeItem) e.item;
