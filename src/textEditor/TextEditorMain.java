@@ -63,13 +63,13 @@ import org.eclipse.swt.widgets.TreeItem;
 			textEditorShell.setText("TextEditor: The greatest gedit replacement yet");
 			textEditorShell.setLayout(new GridLayout(1, false));
 			
-			//Creates the top bar and the 3 items in the "File" Menu
 			Composite topBar = new Composite(textEditorShell, SWT.NONE);
 			
 			RowLayout menuLayout = new RowLayout();
 			menuLayout.center = true;
 			topBar.setLayout(menuLayout);
 			
+			//Created the "File" Menu
 			Menu menuBar = new Menu(textEditorShell, SWT.BAR);
 			MenuItem fileMenuHeader = new MenuItem(menuBar, SWT.CASCADE);
 			fileMenuHeader.setText("&File");
@@ -93,20 +93,17 @@ import org.eclipse.swt.widgets.TreeItem;
 			
 			CLabel mainLabel = new CLabel(topBar, SWT.NONE);
 			mainLabel.setText("Current Directory:");
-			//Creates the text that goes beside the Change Directory button
 			explorerDirLabel = new CLabel(topBar, SWT.NONE);
 			explorerDirLabel.setText(editorDir);
 			
-			//
 			textEditorShell.setMenuBar(menuBar);
 			
-			
+			//Creating the file/text viewers
 			Composite mainExplorerWindow = new Composite(textEditorShell, SWT.NONE);
 			mainExplorerWindow.setLayout(new GridLayout(2, true));
 			GridData fillGrid = new GridData(SWT.FILL, SWT.FILL, true, true);
 			mainExplorerWindow.setLayoutData(fillGrid);
-			
-			//
+		
 			
 			contentViewer = new TreeViewer(mainExplorerWindow);
 			fileContent = new Text(mainExplorerWindow, SWT.MULTI | SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL);	
@@ -181,7 +178,6 @@ import org.eclipse.swt.widgets.TreeItem;
 
 		  class fileSaveItemListener implements SelectionListener {
 		    public void widgetSelected(SelectionEvent event) {
-		      //nothing yet
 		    	if (currentFile != null) {
 		    		FileOutputStream outStream = null;
 		    		 try {
@@ -190,7 +186,6 @@ import org.eclipse.swt.widgets.TreeItem;
 
 		    			 outStream.write(bytesArray);
 		    			 outStream.flush();
-		    			 
 		    			 
 		    		 }catch (IOException e1) {
 							e1.printStackTrace();
@@ -210,7 +205,6 @@ import org.eclipse.swt.widgets.TreeItem;
 		    }
 
 		    public void widgetDefaultSelected(SelectionEvent event) {
-		    	//nothing yet
 		    	if (currentFile != null) {
 		    		FileOutputStream outStream = null;
 		    		 try {
@@ -241,7 +235,7 @@ import org.eclipse.swt.widgets.TreeItem;
 		  
 		  class changeDirItemListener implements SelectionListener {
 			    public void widgetSelected(SelectionEvent event) {
-			      //nothing yet
+			      
 			    	ChangeDirDialog dialog = new ChangeDirDialog(textEditorShell);
 					
 					if (dialog.open() == Window.OK) {
@@ -258,7 +252,7 @@ import org.eclipse.swt.widgets.TreeItem;
 			    }
 
 			    public void widgetDefaultSelected(SelectionEvent event) {
-			    	//nothing yet
+			    	
 			    	ChangeDirDialog dialog = new ChangeDirDialog(textEditorShell);
 					
 					if (dialog.open() == Window.OK) {
@@ -273,7 +267,7 @@ import org.eclipse.swt.widgets.TreeItem;
 						}
 					}
 			    }
-			  }
+		  }
 
 	}
 	
